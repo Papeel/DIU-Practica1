@@ -3,6 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -23,52 +24,51 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="equivalenceLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="euroField" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="button" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="equivalenceField" min="-2" pref="90" max="-2" attributes="0"/>
-                  <Component id="dollarField" min="-2" pref="100" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="55" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
               <Component id="euroLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="dollarLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Component id="equivalenceLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="equivalenceField" min="-2" pref="100" max="-2" attributes="0"/>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="euroField" min="-2" pref="100" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="button" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="dollarField" min="-2" pref="100" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="equivalenceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="equivalenceField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="equivalenceField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+              <EmptySpace pref="71" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="button" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="euroField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="dollarField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="euroField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="dollarField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="euroLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="dollarLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="euroLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="100" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -76,7 +76,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="equivalenceLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Valor de cambio (1 euro en d&#xf3;lares):"/>
+        <Property name="text" type="java.lang.String" value="Valor de cambio (Cuanto equivale 1 &#x20ac; en d&#xf3;lares):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="button">

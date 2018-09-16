@@ -1,6 +1,3 @@
-
-import java.awt.Color;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -38,8 +35,9 @@ public class MainWindow extends javax.swing.JFrame {
         dollarLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        equivalenceLabel.setText("Valor de cambio (1 euro en dólares):");
+        equivalenceLabel.setText("Valor de cambio (Cuanto equivale 1 € en dólares):");
 
         button.setText("Convertir");
         button.addActionListener(new java.awt.event.ActionListener() {
@@ -58,70 +56,72 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(equivalenceLabel)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(euroField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(button)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(equivalenceField, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dollarField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(120, 120, 120)
                 .addComponent(euroLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(dollarLabel)
-                .addGap(99, 99, 99))
+                .addGap(120, 120, 120))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(equivalenceLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(equivalenceField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(euroField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(button)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dollarField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(equivalenceLabel)
-                    .addComponent(equivalenceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(75, 75, 75)
+                    .addComponent(equivalenceField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(button)
-                    .addComponent(euroField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dollarField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(euroField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dollarField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(euroLabel)
-                    .addComponent(dollarLabel))
-                .addContainerGap(100, Short.MAX_VALUE))
+                    .addComponent(dollarLabel)
+                    .addComponent(euroLabel))
+                .addGap(71, 71, 71))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
-     
-        if (checkExchangeRate(equivalenceField.getText())) {
+        if (checkFormat(equivalenceField.getText(), "Valor de cambio")) {
             double exchangeRate = Double.parseDouble(equivalenceField.getText());
-        
             String euro = euroField.getText();
             String dollar = dollarField.getText();
-            if (checkExchangeRate(dollar) && euro.isEmpty() && !dollar.isEmpty()) {
+            if (euro.isEmpty() && !dollar.isEmpty() && checkFormat(dollar, "$")) {
                 double dollarValue = Double.parseDouble(dollar);
-                euroField.setText(String.valueOf((double)(Math.round((dollarValue / exchangeRate)*100d)/100d)));
-                //euroField.setText(String.valueOf(dollarValue / exchangeRate));
-            } else if(checkExchangeRate(euro) && !euro.isEmpty() && dollar.isEmpty()) {
-                System.out.println(checkExchangeRate(euro));
+                euroField.setText(String.valueOf((Math.round((dollarValue / exchangeRate)*100)/100.)));
+            } else if(!euro.isEmpty() && dollar.isEmpty() && checkFormat(euro, "€")) {
                 double euroValue = Double.parseDouble(euro);
-                dollarField.setText(String.valueOf((double)(Math.round((euroValue * exchangeRate)*100d)/100d)));
+                dollarField.setText(String.valueOf((Math.round((euroValue * exchangeRate)*100)/100.)));
             }
         }
-
     }//GEN-LAST:event_buttonActionPerformed
 
-    private boolean checkExchangeRate(String exchangeRate) {
-        return exchangeRate.matches("\\d+([.]\\d{0,2})?");
+    private boolean checkFormat(String inputData, String message) {
+        if (inputData.matches("\\d+([.]\\d{0,2})?"))
+            return true;
+        else {
+            System.out.println("Compruebe que el campo \"" + message + "\" es"
+                    + " un número con dos decimales como máximo.");
+            return false;
+        }
     }
     
     /**
